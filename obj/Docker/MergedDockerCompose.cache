@@ -1,0 +1,19 @@
+services:
+  jenkins_test:
+    build:
+      context: D:\TestProject\net\Jenkins_Test\Jenkins_Test
+      dockerfile: Jenkins_Test/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44341'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: jenkinstest
+    ports:
+    - published: 50115
+      target: 80
+    - published: 44341
+      target: 443
+    volumes:
+    - C:\Users\Think\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Think\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
